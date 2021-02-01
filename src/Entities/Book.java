@@ -1,6 +1,8 @@
 package Entities;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable {
     private int id;
     private String name;
     private int code;
@@ -42,6 +44,7 @@ public class Book {
         return "Book{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", code=" + code +
                 '}';
     }
 }

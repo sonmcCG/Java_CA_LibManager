@@ -1,14 +1,17 @@
 package Behaviors;
 
 import Entities.Book;
+import FileIO.FileProcess;
 
 import java.util.ArrayList;
 
 public class BookManagement {
     ArrayList<Book> books = new ArrayList<>();
+    final String PATH = "book.dat";
 
     public void show() {
-        for (Book book : books) {
+        ArrayList<Book> dataFromFile = ( ArrayList<Book>)FileProcess.readFromFile(PATH);
+        for (Book book : dataFromFile) {
             System.out.println(book.toString());
         }
     }
@@ -20,10 +23,13 @@ public class BookManagement {
                 bUpdate.setCode(b.getCode());
             }
         }
+        FileProcess.writeObjectToFile(books, PATH);
     }
 
     public void add(Book b) {
+        books =(ArrayList<Book>) FileProcess.readFromFile(PATH);
         books.add(b);
+        FileProcess.writeObjectToFile(books, PATH);
     }
 
     public Book getBookByCode(int code) {
@@ -42,5 +48,6 @@ public class BookManagement {
                 books.remove(b);
             }
         }
+        FileProcess.writeObjectToFile(books, PATH);
     }
 }

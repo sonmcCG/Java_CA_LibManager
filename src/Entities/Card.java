@@ -1,8 +1,9 @@
 package Entities;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Card {
+public class Card implements Serializable {
     private List<Book> books;
     private Student student;
     private int id;
@@ -34,8 +35,9 @@ public class Card {
     @Override
     public String toString() {
         String info = "Card{" +
-                ", studentId=" + student.getId() +
-                ", id=" + id +
+                ", Student Id=" + student.getId() +
+                ", Student Name=" + student.getName() +
+                ", Card id=" + id +
                 "Books:";
         for (Book b: books) {
             info += b.toString();
